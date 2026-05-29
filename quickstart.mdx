@@ -1,45 +1,66 @@
 ---
 title: Quickstart
-description: Get started with FIREla in minutes
+description: A minimalist, self-hosted AI bot for automated billing ingestion and FIRE financial planning
 ---
 
-# Quickstart
+FIREla consists of two independent parts that work together:
 
-Get FIREla up and running on your machine.
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0', margin: '2rem auto', maxWidth: '50%' }}>
+  <div style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fffaf6' }}>
+    <span style={{ display: 'inline-block', background: '#FF7F3F', color: '#fff', borderRadius: '9999px', padding: '0.15rem 0.6rem', fontSize: '0.7rem', fontWeight: 'bold', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>BOT</span>
+    <strong style={{ display: 'block', fontSize: '1.1rem' }}>firela-bot</strong>
+    <p style={{ margin: '0.5rem 0 0', color: '#555', fontSize: '0.95rem' }}>
+      AI advisor for FIRE planning<br />
+      Automated billing ingestion
+    </p>
+  </div>
+  <div style={{ fontSize: '1.5rem', color: '#FF7F3F', padding: '0.25rem 0', textAlign: 'center' }}>▲<br />▼</div>
+  <div style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fcfcfd' }}>
+    <span style={{ display: 'inline-block', background: '#6b7280', color: '#fff', borderRadius: '9999px', padding: '0.15rem 0.6rem', fontSize: '0.7rem', fontWeight: 'bold', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>APP</span>
+    <strong style={{ display: 'block', fontSize: '1.1rem' }}>Lifetime Ledger</strong>
+    <p style={{ margin: '0.5rem 0 0', color: '#555', fontSize: '0.95rem' }}>
+      Beancount double-entry<br />
+      Zero tracking · Full privacy
+    </p>
+  </div>
+</div>
 
-## Prerequisites
+## Deploy firela-bot
 
-- Docker and Docker Compose
-- Git
+The fastest way to run firela-bot — deploy to Cloudflare Workers with one click:
 
-## Installation
+<p align="center">
+  <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/fire-la/firela-bot/tree/main/packages/ui">
+    <img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare Workers" />
+  </a>
+</p>
 
-### 1. Clone the repository
+Or clone and configure manually:
 
 ```bash
-git clone https://github.com/fire-la/firela
-cd firela
+git clone https://github.com/fire-la/firela-bot
+cd firela-bot
 ```
 
-### 2. Configure environment
+See the [firela-bot README](https://github.com/fire-la/firela-bot) for full configuration options.
 
-```bash
-cp .env.example .env
-# Edit .env with your preferences
-```
+## Get the Lifetime Ledger
 
-### 3. Start the application
+Track your finances with complete privacy — no one sees your data but you.
 
-```bash
-docker-compose up -d
-```
+<CardGroup cols={2}>
+  <Card title="App Store" icon="apple">
+    Coming soon
+  </Card>
+  <Card title="Google Play" icon="google">
+    Coming soon
+  </Card>
+</CardGroup>
 
-### 4. Access FIREla
+<Info>
+  You can also use any Beancount-compatible tool. Your data is just plain text — no lock-in.
+</Info>
 
-Open your browser and navigate to `http://localhost:3000`
+## Connect them
 
-## Next Steps
-
-- Learn about [Beancount](/concepts/beancount) syntax
-- Configure [self-hosting](/concepts/self-hosting) options
-- Explore the [API](/api-reference/introduction)
+Once you have both running, firela-bot reads your ledger data to build your financial profile and deliver personalized FIRE insights.
