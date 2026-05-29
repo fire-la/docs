@@ -5,8 +5,8 @@ description: A minimalist, self-hosted AI bot for automated billing ingestion an
 
 FIREla consists of two independent parts that work together:
 
-<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0', margin: '2rem auto', maxWidth: '50%' }}>
-  <div style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fffaf6' }}>
+<div className="firela-arch" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0' }}>
+  <div className="firela-bot-card" style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fffaf6' }}>
     <span style={{ display: 'inline-block', background: '#FF7F3F', color: '#fff', borderRadius: '9999px', padding: '0.15rem 0.6rem', fontSize: '0.7rem', fontWeight: 'bold', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>BOT</span>
     <strong style={{ display: 'block', fontSize: '1.1rem' }}>firela-bot</strong>
     <p style={{ margin: '0.5rem 0 0', color: '#555', fontSize: '0.95rem' }}>
@@ -15,7 +15,7 @@ FIREla consists of two independent parts that work together:
     </p>
   </div>
   <div style={{ fontSize: '1.5rem', color: '#FF7F3F', padding: '0.25rem 0', textAlign: 'center' }}>▲<br />▼</div>
-  <div style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fcfcfd' }}>
+  <div className="firela-app-card" style={{ border: '1px solid #e5e7eb', borderRadius: '12px', padding: '1.25rem 1.5rem', width: '100%', textAlign: 'center', background: '#fcfcfd' }}>
     <span style={{ display: 'inline-block', background: '#6b7280', color: '#fff', borderRadius: '9999px', padding: '0.15rem 0.6rem', fontSize: '0.7rem', fontWeight: 'bold', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>APP</span>
     <strong style={{ display: 'block', fontSize: '1.1rem' }}>Lifetime Ledger</strong>
     <p style={{ margin: '0.5rem 0 0', color: '#555', fontSize: '0.95rem' }}>
@@ -28,6 +28,8 @@ FIREla consists of two independent parts that work together:
 ## Deploy firela-bot
 
 The fastest way to run firela-bot — deploy to Cloudflare Workers with one click:
+
+<p align="center"><small style={{ color: '#999' }}>Free tier: 100K requests/day, 10ms CPU time — more than enough for personal use.</small></p>
 
 <p align="center">
   <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/fire-la/firela-bot/tree/main/packages/ui">
