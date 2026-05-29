@@ -71,3 +71,40 @@ html.dark .firela-arch .firela-app-card {
   background: #1e1e1e !important;
   border-color: #3a3a3a !important;
 }
+
+/* Store badges - disabled/coming soon state */
+.firela-store-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.firela-badge-wrapper {
+  text-align: center;
+}
+
+.firela-badge-wrapper img {
+  height: 44px;
+  filter: grayscale(1) opacity(0.5);
+  pointer-events: none;
+}
+
+.firela-badge-wrapper [data-rmiz-btn-zoom],
+.firela-badge-wrapper [data-rmiz-ghost] {
+  display: none !important;
+}
+
+.firela-badge-label {
+  display: block;
+  text-align: center;
+  margin-top: 0.35rem;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/* Store badges - dark mode */
+html.dark .firela-badge-label {
+  color: #777;
+}
