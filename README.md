@@ -1,6 +1,8 @@
 # FIREla Docs
 
-Documentation site for [FIREla](https://firela.io) — open source, self-hosted financial data management with Beancount.
+Documentation site for [FIREla](https://firela.io) — AI advisor for Financial Independence, Retire Early.
+Self-hosted financial data sovereignty.
+Open source. Free. Zero lock-in..
 
 Built with [Mintlify](https://mintlify.com) and deployed at **docs.firela.io**.
 
