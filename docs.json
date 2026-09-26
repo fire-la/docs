@@ -15,7 +15,14 @@
   "seo": {
     "title": "firela docs - Open Source Financial Data Management",
     "description": "Open source, self-hosted financial data management with Beancount. Your financial data. Your control.",
-    "keywords": ["beancount", "financial data", "self-hosted", "open source", "accounting", "plain text accounting"]
+    "keywords": [
+      "beancount",
+      "financial data",
+      "self-hosted",
+      "open source",
+      "accounting",
+      "plain text accounting"
+    ]
   },
   "integrations": {
     "ga4": {
@@ -31,15 +38,13 @@
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "installation"
+              "quickstart"
             ]
           },
           {
             "group": "Core concepts",
             "pages": [
-              "concepts/beancount",
-              "concepts/self-hosting"
+              "concepts/beancount"
             ]
           }
         ]
@@ -59,9 +64,9 @@
       {
         "tab": "Blog",
         "pages": [
+          "blog/a-ledger-for-life",
           "blog/introducing-firela",
-          "blog/why-beancount",
-          "blog/self-hosting-financial-data"
+          "blog/why-beancount"
         ]
       }
     ],
