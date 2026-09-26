@@ -1,0 +1,69 @@
+---
+title: FAQ
+description: Firela FAQ — what it is, how it handles your data, parsers, licensing, self-hosting
+---
+
+# Frequently Asked Questions
+
+**Firela is a beancount lifetime ledger — plain text, zero tracking. Your financial data never leaves your hand.**
+
+## What is Firela?
+
+Firela is an open-source (AGPL-3.0) beancount ecosystem for privacy-first personal finance. It includes a mobile lifetime-ledger client (firela-app, in active development) with multi-region bank statement parsers and an on-device PII sanitizer, and billclaw, a self-hostable collector you can deploy today on Cloudflare Workers. The name combines FIRE (Financial Independence, Retire Early) with "la" (Ledger).
+
+## Is Firela free?
+
+The code is free and open source under AGPL-3.0, and billclaw is designed to self-host on Cloudflare Workers' free tier — no infrastructure cost.
+
+## Which banks and platforms can Firela parse?
+
+10 registered statement parsers across three regions: China (Alipay mobile, web, and Yu'ebao exports, WeChat Pay, CCB debit, CMBC credit, and a final-verification bank parser), Hong Kong (HSBC credit and debit), and Europe (Degiro). Parsers for Bank of China, ICBC, Deutsche Bank, and Interactive Brokers are in development.
+
+## How does Firela handle my personal data?
+
+An on-device PII sanitizer detects and masks 11 types of sensitive data — including Chinese ID cards, HKID, US SSN, IBAN (validated across 62 country formats), phone numbers, emails, and bank cards — before any data leaves your phone. Two rule modes are offered: regular (masks personal identifiers) and community (masks everything, safe for public sharing).
+
+## Is Firela really open source?
+
+Yes — the public repos are AGPL-3.0, which makes the privacy claims auditable: you can read the parser and sanitizer code line by line, run it yourself, and verify what it does.
+
+## Do I need an account?
+
+No. The parser and sanitizer libraries run locally on your device without any Firela account. billclaw is self-hosted on your own Cloudflare account with your own API keys — you hold the access tokens.
+
+## Why Beancount?
+
+Beancount is a mature, open-source plain-text double-entry accounting format. Plain text is universal and future-proof: your ledger doesn't depend on any single app staying alive — it outlives every vendor, including us.
+
+## Which regions does Firela cover?
+
+Statement parsing covers China (Alipay, WeChat Pay, major banks), Hong Kong (HSBC), and Europe (Degiro). PII detection covers CN, HK, US, and 62 IBAN country formats, plus universal types like email and credit card numbers.
+
+## How is Firela different from Mint, YNAB, or Monarch?
+
+Different model, stated as facts: Mint was shut down by Intuit in 2024; YNAB is closed-source at $109/year; Monarch is $99/year and requires banking credentials. Firela is open source (AGPL-3.0), parses statements locally, and masks personal data on device — your data lives in an open format you control.
+
+## Who is Firela for?
+
+Privacy-conscious individuals, FIRE movement participants, Beancount and plaintext-accounting users, self-hosting enthusiasts, and people who need multi-region bank support (CN/EU/HK).
+
+## Can I self-host?
+
+Yes — billclaw is built for it: it deploys to Cloudflare Workers' free tier with your own API keys. The parser and sanitizer are open-source Dart libraries you can run and audit yourself.
+
+## Where can I get Firela?
+
+billclaw: deploy it yourself from the [Quickstart](/quickstart). The mobile app is in active development — not yet on app stores — follow [github.com/fire-la](https://github.com/fire-la) for updates.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Firela?", "acceptedAnswer": {"@type": "Answer", "text": "Firela is an open-source (AGPL-3.0) beancount ecosystem for privacy-first personal finance: a mobile lifetime-ledger client with multi-region bank statement parsers and an on-device PII sanitizer, plus a self-hostable collector (billclaw) that runs on Cloudflare Workers."}},
+    {"@type": "Question", "name": "How does Firela handle my personal data?", "acceptedAnswer": {"@type": "Answer", "text": "An on-device PII sanitizer detects and masks 11 types of sensitive data — CN ID cards, HKID, US SSN, IBAN (62 country formats), phones, emails, bank cards — before any data leaves your phone."}},
+    {"@type": "Question", "name": "Is Firela really open source?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, the public repos are AGPL-3.0, so the privacy claims are auditable: read the parser and sanitizer code, run it yourself, verify what it does."}},
+    {"@type": "Question", "name": "Can I self-host?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — billclaw deploys to Cloudflare Workers' free tier with your own API keys; the parser and sanitizer are open-source Dart libraries."}}
+  ]
+}
+</script>
