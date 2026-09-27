@@ -1,17 +1,15 @@
 ---
-title: Introducing FIREla
+title: Introducing Firela
 description: Firela is a beancount lifetime ledger — plain text, zero tracking. Your financial data never leaves your hand.
-author: FIREla Team
-date: 2025-02-21
+author: Firela Team
+date: 2026-02-21
 ---
 
-# Introducing FIREla
+# Introducing Firela
 
-Most financial apps have a dirty secret: they own your data.
+Most financial apps have a dirty secret: your history lives in their database. Even where export exists, it gives you CSV rows — not a ledger that outlives the app. And inspecting what the app actually does with your data is rarely possible.
 
-You upload your transactions, categorize your spending, build years of financial history—and then you're locked in. Can't export. Can't inspect. Can't leave.
-
-**FIREla is different.**
+**Firela is a beancount lifetime ledger — a ledger for life.**
 
 ## Why We Built This
 
@@ -21,13 +19,13 @@ We believe your financial data is among your most personal information. It revea
 - How much you earn and save
 - Your habits, goals, and anxieties
 
-This data shouldn't be held hostage by a closed platform you can't export from, inspect, or fork away from.
+This data shouldn't be held in a format that serves the platform more than it serves you.
 
-## The FIREla Approach
+## The Firela Approach
 
 <CardGroup cols={3}>
   <Card title="AGPL Code" icon="code-branch">
-    The parser and sanitizer repos are public (AGPL-3.0). Audit them yourself.
+    The parser and sanitizer libraries are public under AGPL-3.0, in the firela-app repo. Audit them yourself.
   </Card>
   <Card title="Zero-Tracking Vault" icon="lock">
     The ledger is read and written through your tokens — the cloud sees the books, never you.
@@ -37,9 +35,7 @@ This data shouldn't be held hostage by a closed platform you can't export from, 
   </Card>
 </CardGroup>
 
-## What's Next
-
-Where the project stands today:
+## Where the Project Stands
 
 - **billclaw, the collector** — deployable now to Cloudflare Workers' free tier ([quickstart](/quickstart))
 - **The mobile app** — in active development (not yet on app stores); its parser and sanitizer libraries are public today
@@ -52,7 +48,3 @@ The public repos are AGPL-3.0, and the parser pipeline is community-driven — n
 <Button href="https://github.com/fire-la" variant="primary">
   Star us on GitHub
 </Button>
-
----
-
-*This is the first post in a series. Follow along as we build an open future for personal finance.*

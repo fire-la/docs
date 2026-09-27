@@ -1,13 +1,13 @@
 ---
 title: Why We Chose Beancount
-description: The case for plain text accounting in FIREla
-author: FIREla Team
-date: 2025-02-20
+description: The case for plain text accounting in Firela
+author: Firela Team
+date: 2026-02-21
 ---
 
 # Why We Chose Beancount
 
-When building FIREla, we evaluated dozens of accounting formats. We chose [Beancount](http://furius.ca/beancount/). Here's why.
+When building Firela, we evaluated dozens of accounting formats. We chose [Beancount](https://beancount.github.io/docs/). Here's why.
 
 ## The Problem with Traditional Finance Apps
 
@@ -22,9 +22,9 @@ Most personal finance tools store your data in proprietary databases:
 Plain text accounting stores your financial records in simple text files:
 
 ```beancount
-2024-01-15 * "Coffee Shop"
-  Expenses:Dining:Coffee    5.50 USD
-  Assets:Bank:Checking     -5.50 USD
+2024-01-15 * "Grocery Store"
+  Expenses:Groceries         42.30 USD
+  Assets:Bank:Checking       -42.30 USD
 ```
 
 Benefits:
@@ -36,33 +36,33 @@ Benefits:
 
 ## Why Beancount Specifically
 
-We evaluated Ledger, HLedger, and Beancount. Beancount won because:
+We evaluated Ledger, hledger, and Beancount. All three are mature, all three enforce balanced entries, and all three support balance assertions — the honest comparison is a matter of fit, not winners:
 
-| Feature | Beancount | Ledger | HLedger |
-|---------|-----------|--------|---------|
-| Syntax clarity | ✅ Clean | Verbose | Clean |
-| Python ecosystem | ✅ Native | Plugin | Plugin |
-| Error messages | ✅ Helpful | Cryptic | Good |
-| Community | Growing | Large | Medium |
-| Validation | ✅ Strict | Loose | Medium |
+| | [Beancount](https://beancount.github.io/docs/) | [Ledger](https://ledger-cli.org/doc/ledger.1.html) | [hledger](https://hledger.org/) |
+|---|---|---|---|
+| Unbalanced entries | Rejected outright | Rejected outright | Rejected outright |
+| Balance assertions | Yes | Yes | Yes |
+| Syntax style | Explicit (currency units everywhere) | Terse (amounts elide) | Middle ground |
+| Implementation | Python | C++ | Haskell |
+| Community | Growing | The original — largest | Active and growing |
 
-## How FIREla Uses Beancount
+We picked Beancount for its explicitness (a feature when your ledger must be auditable for life) and its Python ecosystem. If you prefer terse syntax or come from the Ledger lineage, those are excellent tools too — see [hledger's own fair comparison](https://hledger.org/beancount.html).
 
-FIREla doesn't replace Beancount—it enhances it:
+## Where Firela Is Going with Beancount
 
-1. **Visual editing** - GUI for transaction entry
-2. **Automated imports** - Bank sync, CSV parsing
-3. **Smart categorization** - AI-assisted transaction labeling
-4. **Beautiful reports** - Interactive charts and dashboards
+The mobile app is in active development, not yet on app stores. What we're building on top of your plain-text ledger:
+
+1. **Visual editing** - a simple UI for transaction entry
+2. **Automated imports** - statements parsed on your device into entries you approve
+3. **Reporting** - views over a ledger that already balances
 
 Your underlying `.beancount` files remain pure text, fully under your control.
 
 <Note>
-You can always edit your Beancount files directly in any text editor. FIREla is a layer on top, not a lock-in.
+You can always edit your Beancount files directly in any text editor. Firela is a layer on top, not a lock-in.
 </Note>
 
 ## Learn More
 
-- [Beancount Documentation](http://furius.ca/beancount/doc/index)
+- [Beancount Documentation](https://beancount.github.io/docs/)
 - [Plain Text Accounting](https://plaintextaccounting.org/)
-- [FIREla Beancount Guide](/concepts/beancount)
