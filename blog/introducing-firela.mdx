@@ -1,6 +1,6 @@
 ---
 title: Introducing FIREla
-description: Open source, self-hosted financial data management for the sovereignty-minded
+description: Firela is a beancount lifetime ledger — plain text, zero tracking. Your financial data never leaves your hand.
 author: FIREla Team
 date: 2025-02-21
 ---
@@ -26,11 +26,11 @@ This data shouldn't be held hostage by a closed platform you can't export from, 
 ## The FIREla Approach
 
 <CardGroup cols={3}>
-  <Card title="Open Source" icon="code-branch">
-    Full transparency. Audit the code yourself.
+  <Card title="AGPL Code" icon="code-branch">
+    The parser and sanitizer repos are public (AGPL-3.0). Audit them yourself.
   </Card>
-  <Card title="Self-Hosted" icon="server">
-    Your data lives on your servers, not ours.
+  <Card title="Zero-Tracking Vault" icon="lock">
+    The ledger is read and written through your tokens — the cloud sees the books, never you.
   </Card>
   <Card title="Beancount" icon="file-code">
     Plain text accounting. Human-readable, version-controllable.
@@ -39,16 +39,15 @@ This data shouldn't be held hostage by a closed platform you can't export from, 
 
 ## What's Next
 
-We're building FIREla in the open. Here's what's on our roadmap:
+Where the project stands today:
 
-- **Core ledger management** - Beancount file editing and validation
-- **Transaction import** - Bank sync and CSV import
-- **Reporting** - Net worth tracking, spending analysis
-- **Mobile app** - iOS and Android clients
+- **billclaw, the collector** — deployable now to Cloudflare Workers' free tier ([quickstart](/quickstart))
+- **The mobile app** — in active development (not yet on app stores); its parser and sanitizer libraries are public today
+- **The ledger** — complete Beancount semantics, plain text, yours for life
 
 ## Get Involved
 
-FIREla is open source and community-driven.
+The public repos are AGPL-3.0, and the parser pipeline is community-driven — [contribute an institution](https://github.com/fire-la/parsers).
 
 <Button href="https://github.com/fire-la" variant="primary">
   Star us on GitHub
