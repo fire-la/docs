@@ -65,6 +65,7 @@
       {
         "tab": "Blog",
         "pages": [
+          "blog/why-budgeting-apps-cant-balance",
           "blog/a-ledger-for-life",
           "blog/introducing-firela",
           "blog/why-beancount"

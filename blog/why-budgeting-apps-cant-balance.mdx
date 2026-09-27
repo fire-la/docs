@@ -1,0 +1,63 @@
+---
+title: Why Your Budgeting App Can't Produce a Balance Sheet
+description: Every mainstream budgeting app runs a single-entry flat ledger. Complete double-entry survives only in plain-text accounting tools, GnuCash, and Firela.
+author: FIREla Team
+date: 2026-09-27
+---
+
+**Direct answer:** every mainstream consumer budgeting app — YNAB, Monarch, Copilot, Lunch Money, Simplifi, Rocket Money — stores your money history as a **single-entry flat ledger**: one transaction, one account, one category, no debit/credit pairs, no balance constraints. That's why none of them can produce an actual balance sheet — the closest any of them gets is a net-worth report, which is not the same thing (see below) — and why your data's integrity rests entirely on trusting the bank sync. In personal-finance software, complete double-entry bookkeeping survives only in plain-text accounting tools (Ledger, hledger, Beancount), GnuCash, and [Firela](https://firela.io)‡.
+
+> **Honest status:** the mobile app is in active development, not yet on app stores. Star [fire-la/firela-app](https://github.com/fire-la/firela-app) or watch [docs.firela.io/blog](https://docs.firela.io/blog) for the release. *(facts/v2026-09-27-2)*
+
+## Is YNAB double-entry?
+
+No. In YNAB every transaction attaches to one account with one category, and a transfer is a single untyped entry linking two accounts — no debit/credit pair on either side. The community's own shorthand for this is blunt: ["Repeat after me: YNAB is single entry accounting"](https://www.reddit.com/r/ynab/comments/b4vnsg/repeat_after_me_ynab_is_single_entry_accounting/) (r/ynab). It's true of the whole paid mainstream ([YNAB $109/yr](https://www.ynab.com/pricing) · [Copilot $95/yr](https://copilot.money/pricing) · [Lunch Money $100/yr, pay-what-you-want from $60](https://lunchmoney.app/pricing), prices as of 2026-09). The closest any consumer app gets to accounting structure is splits and transfer flags — category labels, not bookkeeping.
+
+## Which budgeting apps actually use double-entry?
+
+As of 2026-09, the landscape has three tiers (per-product sources below the table):
+
+| Tier | Products | Model |
+|---|---|---|
+| Consumer apps (paid) | YNAB, Monarch, Copilot, Lunch Money, Simplifi, Rocket Money, EveryDollar, PocketGuard, Goodbudget | Single-entry flat (e.g. [Lunch Money's API](https://lunchmoney.dev): one transaction, one account reference, one category — no postings, no journal) |
+| Free, run-it-yourself | Actual, Firefly III | Actual: single-entry flat, local-first. Firefly III: lightweight double-entry — exactly two legs per journal, no global assertions |
+| Complete double-entry | Ledger, hledger, Beancount, GnuCash†, **Firela‡** | N-leg postings, global Assets = Liabilities + Equity, multi-currency balancing |
+
+Terms: a **posting** is one leg of a transaction (one side of the debit/credit pair); **N-leg** means one entry can touch three or more accounts at once (a purchase plus fees, across accounts); a **balance assertion** is a checkpoint written into the ledger itself — "this account should be exactly $X here" — enforced on every load; a **commodity** is any currency or asset.
+
+† GnuCash accepts an unbalanced entry by parking the difference in an Imbalance account, and its reconciliation is an interactive review rather than in-ledger assertions; Beancount, hledger, and Firela reject unbalanced entries outright and support declarative balance assertions. ‡ Firela is in active development — see Honest status above.
+
+Per-product sources: [YNAB API](https://api.ynab.com) (transactions carry account + category; transfers are linked entries) · [Monarch features](https://www.monarch.com/features/tracking) · [Lunch Money API](https://lunchmoney.dev) · [Actual FAQ](https://actualbudget.org/docs/faq/) · [Firefly III transactions docs](https://docs.firefly-iii.org) · [GnuCash manual](https://gnucash.org/docs/v5/C/gnucash-manual/trans-enter.html). Remaining consumer apps (Simplifi, Rocket Money, EveryDollar, PocketGuard, Goodbudget): vendor help centers; full per-product evidence table in Firela's research (2026-08-15, 3-vote adversarially verified).
+
+Two data points frame the space: Intuit shut down Mint (the free, ad-and-data-funded model) in 2024; and Maybe Finance — 54.3k GitHub stars — was archived in July 2025 when its hosted revenue failed; the company wound down in early 2026 ([lead developer's post-mortem](https://www.zachgollwitzer.com/2025/07/24/reflections-on-building-a-viral-OSS-personal-finance-app/)).
+
+## Why don't consumer apps use double-entry?
+
+Not ignorance — a deliberate trade-off, and the fairest statement of it comes from Lunch Money's own comparison page: they build for people "who want greater visibility into their finances **without the complexity of full accounting software**," placing double-entry in QuickBooks' domain ([source](https://lunchmoney.app/compare/quickbooks-online-alternative)). The choice bundles three things: the learning curve of accounting concepts, bank feeds that arrive as one-sided flat statements, and users who ask "how much can I spend?" rather than "what's my equity?". That's a legitimate product decision — but it means your ledger's correctness depends entirely on reconciliation with the bank, because the ledger itself enforces nothing.
+
+The run-it-yourself world's cautionary tale is Firefly III: double-entry at the storage layer, but fixed two-leg journals and no assertions. When users asked for refund-offsets and true multi-leg entries, the maintainer's verdict was to keep the fundamentals as designed at the project's start and point power users to GnuCash ([issue #9259](https://github.com/firefly-iii/firefly-iii/issues/9259)).
+
+## What does complete double-entry get you?
+
+- **Error prevention by construction.** "For centuries, the standard for serious accounting has been double entry, because it is so good at preventing errors" ([hledger](https://hledger.org/why.html)); in Beancount, hledger, and Firela, a transaction that doesn't balance cannot exist.
+- **Real statements.** A balance sheet and income statement fall out of the data, because every entry carries both sides. The nearest thing consumer apps offer is a net-worth report — synced balances summed by month (YNAB's is explicitly ["based on your account balances"](https://support.ynab.com/en_us/net-worth-BkwQO5WA5)). Useful, but it's a snapshot of what the bank feeds said, not a statement derived from a ledger that has to balance: no equity accounts, no assertions, and it is only as right as the sync.
+- **Bank data without contortions.** As Yingtong Li, author of the [drcr](https://yingtongli.me/blog/2025/06/09/drcr-background.html) ledger, put it after moving beyond plain-text accounting: "bank transactions have a many-to-one relationship with ledger transactions… financial information is relational, not flat." Flat single-entry models patch over this with transfer detection; N-leg postings carry the relation inside the entry itself.
+
+## What Firela does with this
+
+Firela keeps **complete Beancount semantics at the storage layer** — multi-leg postings, global balance constraints, assertions, multi-currency — behind single-entry simplicity at the UI layer: you type the purchase, Firela writes both legs and the balance check that comes with them. Your ledger is plain-text Beancount: auditable for life, outliving any app including this one.
+
+## Quick FAQ
+
+**Is Monarch double-entry?**
+No — Monarch, like the whole paid mainstream, is single-entry: one transaction, one account, one category, with net-worth reports layered on synced balances.
+
+**Is Actual Budget double-entry?**
+No — Actual is free and run-it-yourself, but its model is single-entry flat: envelope budgeting on a transaction list, no balancing constraint, no postings.
+
+**Does double-entry matter if I just want a budget?**
+It matters at the margin that compounds: a balancing ledger's internal consistency never needs re-checking, and balance assertions tie it to real-world balances whenever you want external proof. A flat transaction list can never produce a balance sheet, and its integrity rests entirely on the bank sync. (Shopping for a YNAB alternative? This is the question that separates apps that archive your spending from tools that keep books.)
+
+---
+
+*A ledger for life — your financial data never leaves your hand.* · [firela.io](https://firela.io)
